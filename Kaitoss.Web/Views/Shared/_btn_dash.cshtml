@@ -1,0 +1,9 @@
+﻿@inject UserManager<ApplicationUser> userManager;
+
+@if (User.Identity!.IsAuthenticated)
+{
+      <li class="nav-item">
+         <a  asp-controller="Goal" asp-action="Index">Dashboard</a>
+     </li>
+   
+}

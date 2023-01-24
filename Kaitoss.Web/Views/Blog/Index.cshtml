@@ -1,0 +1,48 @@
+﻿
+
+@{
+    ViewBag.Title = "Table Blogs";
+    Layout = "~/Views/Shared/_dashboard.cshtml";
+}
+<div class="container p-3">
+       <div class="row pt-4">
+        <div class="col-12">
+            <h1 class="h1-header mt-5"> Table Blogs</h1>
+        </div>
+        <div class="col-6 my-2">
+            <a class="btn-primary btn"  asp-controller="Blog" asp-action="Upsert"><i class="bi bi-plus-circle me-1"></i> Create New Blog</a>
+        </div>
+    </div>
+</div>
+
+<table id="tblData" class="table table-hover table-bordered ">
+
+    <thead>
+        <tr>
+            <th>
+                Image Blog
+            </th>
+              <th>
+                Title 
+            </th>
+            <th>
+            Description
+            </th>
+            <th>
+           Writer
+            </th>
+          
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+</table>
+ 
+@section Scripts{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="~/Components/js/Blog.js"></script>
+}
+    
+

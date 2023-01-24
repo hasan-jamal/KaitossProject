@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ApplicationUser>
+
+@{
+    ViewData["Title"] = "list of all users";
+    Layout = "~/Views/Shared/_dashboard.cshtml";
+    var listOfRole = new string[] { SD.Role_Admin};
+}
+
+<h1 class="h1-header mt-5">Users List</h1>
+    <div class="container mt-5">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-6">
+            @foreach (var item in listOfRole)
+            {
+                <a class="btn btn-outline-primary mt-4" asp-action="Users" asp-route-filter="@item">@item</a>
+            }
+                </div>
+            <div class="col-md-6">
+         
+             <a class="btn-primary btn d-block ms-auto w-50" asp-controller="Account" asp-action="RegisterCustomer"><i class="bi bi-plus-circle me-1"></i> New User</a>
+
+            </div>
+        </div>
+    </div>
+<div class="container">
+<div class="row">
+    <div class="col-md-12">
+        <p>
+            <h4>
+                List of all users
+            </h4>
+        </p>
+        <div class="overflow-auto">
+        <table class="table">
+            <thead>
+                <tr class="text-center">
+                    <th>@Html.DisplayNameFor(model=> model.Name)</th>
+                    <th>@Html.DisplayNameFor(model=> model.UserName)</th>
+                    <th>@Html.DisplayNameFor(model=> model.Email)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr class="text-center">
+                        <td class="align-middle">@Html.DisplayFor(u => user.Name)</td>
+                        <td class="align-middle">@Html.DisplayFor(u => user.UserName)</td>
+                        <td class="align-middle">@Html.DisplayFor(u => user.Email)</td>
+                        <td class="align-middle">
+                            <a class="btn btn-outline-primary m-auto d-block" asp-action="Update" asp-route-emaile="@user.Email">Update</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+  </div>
+</div>
+
+</div>
+</div>

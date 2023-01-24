@@ -1,0 +1,49 @@
+﻿
+
+@{
+    ViewBag.Title = "Table Goals";
+    Layout = "~/Views/Shared/_dashboard.cshtml";
+}
+<div class="py-3">
+       <div class="row pt-4">
+        <div class="col-12">
+            <h1 class="h1-header mt-5"> Table Goals</h1>
+        </div>
+         <div class="col-6 my-2">
+            <a class="btn-primary btn"  asp-controller="Goal" asp-action="Upsert"><i class="bi bi-plus-circle me-1"></i> Create New Goal</a>
+        </div>
+    </div>
+
+</div>
+
+
+<table id="tblData" class="table table-hover table-bordered ">
+
+    <thead>
+        <tr>
+            <th>
+                Image Goal
+            </th>
+            <th>
+               Title
+            </th>
+              <th>
+             Sub Title
+            </th>
+            <th>
+               Link Video
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+</table>
+ 
+@section Scripts{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="~/Components/js/Goal.js"></script>
+}
+    
+

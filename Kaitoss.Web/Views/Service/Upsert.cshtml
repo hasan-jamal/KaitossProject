@@ -1,0 +1,104 @@
+﻿@model ServiceVM
+@{
+    ViewBag.Title = "Upsert Services";
+    Layout = "~/Views/Shared/_dashboard.cshtml";
+}
+
+<form method="post" class="mb-5" asp-action="Upsert" enctype="multipart/form-data">
+    <input asp-for="Service.Id" hidden />
+    <input asp-for="Service.ImageUrl" hidden />
+
+    <div class="border p-3 mt-4 row">
+        <div class="row pb-2">
+            <h2 class="text-primary"> @(Model.Service.Id != 0 ? "Update" : "Create") Service</h2>
+            <hr />
+        </div>
+        @*<div asp-validation-summary="All"></div>*@
+        <div class="col-lg-6">
+
+            <div class="mb-3">
+                <label asp-for="Service.Title"></label>
+                <input asp-for="Service.Title" class="form-control" />
+                <span asp-validation-for="Service.Title" class="text-danger"></span>
+            </div>
+             <div class="mb-3">
+                <label asp-for="Service.Describe"></label>
+                <textarea asp-for="Service.Describe" rows="4" class="form-control" >
+
+                </textarea>
+                <span asp-validation-for="Service.Describe" class="text-danger"></span>
+            </div>
+    
+        </div>
+        <div class="mb-3 col-lg-6">
+
+            <input type='file' name="file" asp-for="Service.ImageUrl" id="file-input" />
+
+            <div id='img_contain'>
+                @if (Model.Service.Id != 0)
+                {
+                    <img id="image-preview" align='middle' src="@Model.Service.ImageUrl" alt="your image" title='' />
+                }
+                else
+                {
+                    <img id="image-preview" align='middle' src="https://cdn4.vectorstock.com/i/thumb-large/18/73/add-box-simple-icon-on-white-background-vector-3431873.jpg" alt="your image" title='' />
+
+                }
+            </div>
+        </div>
+     
+        <div class="col-lg-12">
+            @if (Model.Service.Id != 0)
+            {
+                <button type="submit" class="btn-primary btn" style="width:150px">Update</button>
+            }
+            else
+            {
+                <button type="submit" onclick="return ValidateInput()" class="btn-primary btn" style="width:150px">Create</button>
+            }
+            <a class="btn btn-secondary"  asp-controller="Service" asp-action="Index">Back To List</a>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial.cshtml" />
+    }
+<script>
+    function ValidateInput(){
+        if(document.getElementById("img-upload").value == ""){
+              Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Please Upload Image !',
+            })
+           return false;
+        }
+        return true;
+    }
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          $('#image-preview').attr('src', e.target.result);
+          $('#image-preview').hide();
+          $('#image-preview').fadeIn(650);
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    $("#file-input").change(function() {
+      readURL(this);
+    });
+
+  
+
+</script>
+
+}

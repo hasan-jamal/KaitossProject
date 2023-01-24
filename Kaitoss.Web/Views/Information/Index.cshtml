@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Table Informations";
+    Layout = "~/Views/Shared/_dashboard.cshtml";
+}
+<div class="py-3">
+    <div class="row pt-4">
+        <div class="col-12">
+            <h1 class="h1-header mt-5"> Table Informations</h1>
+        </div>
+        <div class="col-6 my-2">
+            <a class="btn-primary btn" asp-controller="Information" asp-action="Upsert"><i class="bi bi-plus-circle me-1"></i> Create Information</a>
+        </div>
+    </div>
+</div>
+
+<table id="tblData" class="table table-hover table-bordered ">
+
+    <thead>
+        <tr>
+            <th>
+                Logo
+            </th>
+            <th>
+                Email
+            </th>
+
+            <th>
+                Phone Number
+            </th>
+            <th>
+             Detailed address
+            </th>
+            <th>
+                 Country
+            </th>
+              <th>
+                 Schedule
+            </th>
+            <th>
+               OfficeTime
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+</table>
+
+@section Scripts{
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="~/Components/js/Information.js"></script>
+}
+
+

@@ -1,0 +1,44 @@
+﻿@model LoginVM
+@{
+    ViewData["Title"] = "Index";
+}
+    <!--Style CSS-->
+    <link rel="stylesheet" href="~/css/style.css">
+        <section class="section-login">
+            <div class="container-padding">
+                <div class="row no-gutters shadow-lg align-items-center row-padd">
+                    <div class="col-md-6 d-none d-md-block image-login">
+                        <img src="~/images/login.jpg" class="img-fluid" style="min-height:100%;" />
+                    </div>
+                    <div class="col-md-4 bg-white content-form">
+                        <h1 class="pb-5">Login Form</h1>
+                        <div class="form-style">
+                            <form role="form" asp-action="Index" asp-controller="Account" method="post">
+                                <div class="form-group pb-3">
+                                    <input  id="exampleInputEmail1" type="email" name="Email" asp-for="Email" class="form-control" placeholder="Email Address" aria-describedby="emailHelp">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group pb-2">
+                                    <input type="password" name="Password" asp-for="Password"  class="form-control" placeholder="Password"
+                                        id="exampleInputPassword1">
+                                          <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between flex-col pb-3">
+                                    <div class="d-flex align-items-center">
+                                        <input name="" type="checkbox" value="" />
+                                        <span class="px-2 font-weight-bold">Remember Me</span>
+                                    </div>
+                             
+                                </div>
+                                <div class="pb-2">
+                                    <button type="submit"
+                                        class="btn btn-primary w-100 font-weight-bold mt-2">Submit</button>
+                                </div>
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>

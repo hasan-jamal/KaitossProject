@@ -1,0 +1,130 @@
+﻿@model InformationVM
+@{
+    ViewBag.Title = "Upsert Informations";
+    Layout = "~/Views/Shared/_dashboard.cshtml";
+}
+
+<form method="post" class="mb-5" asp-action="Upsert" enctype="multipart/form-data">
+    <input asp-for="Information.Id" hidden />
+
+    <div class="border p-3 mt-4 row">
+        <div class="row pb-2">
+            <h2 class="text-primary"> @(Model.Information.Id != 0 ? "Update" : "Create") Information</h2>
+            <hr />
+        </div>
+        @*<div asp-validation-summary="All"></div>*@
+        <div class="col-lg-6">
+
+            <div class="mb-3">
+                <label asp-for="Information.Email"></label>
+                <input asp-for="Information.Email" class="form-control" />
+                <span asp-validation-for="Information.Email" class="text-danger"></span>
+            </div>
+             <div class="mb-3">
+                <label asp-for="Information.Detailedaddress"></label>
+                <input asp-for="Information.Detailedaddress" class="form-control" />
+                <span asp-validation-for="Information.Detailedaddress" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Information.Schedule"></label>
+                <input asp-for="Information.Schedule" class="form-control" />
+                <span asp-validation-for="Information.Schedule" class="text-danger"></span>
+            </div>
+        </div>
+       <div class="col-lg-6">
+
+            <div class="mb-3">
+                <label asp-for="Information.Phone"></label>
+                <input asp-for="Information.Phone" class="form-control" />
+                <span asp-validation-for="Information.Phone" class="text-danger"></span>
+            </div>
+             <div class="mb-3">
+                <label asp-for="Information.Country"></label>
+                <input asp-for="Information.Country" class="form-control" />
+                <span asp-validation-for="Information.Country" class="text-danger"></span>
+            </div>
+               <div class="mb-3">
+                <label asp-for="Information.OfficeTime"></label>
+                <input asp-for="Information.OfficeTime" class="form-control" />
+                <span asp-validation-for="Information.OfficeTime" class="text-danger"></span>
+            </div>
+           
+        </div>
+           <div class="mb-3 col-lg-6">
+
+            <input type='file' name="file" asp-for="Information.ImageUrl" id="file-input" />
+
+            <div id='img_contain'>
+                @if (Model.Information.Id != 0)
+                {
+                    <img id="image-preview" align='middle' src="@Model.Information.ImageUrl" alt="your image" title='' />
+                }
+                else
+                {
+                    <img id="image-preview" align='middle' src="https://cdn4.vectorstock.com/i/thumb-large/18/73/add-box-simple-icon-on-white-background-vector-3431873.jpg" alt="your image" title='' />
+
+                }
+            </div>
+        </div>
+     
+        <div class="col-lg-12">
+            @if (Model.Information.Id != 0)
+            {
+                <button type="submit" class="btn-primary btn" style="width:150px">Update</button>
+            }
+            else
+            {
+                <button type="submit" onclick="return ValidateInput()" class="btn-primary btn" style="width:150px">Create</button>
+            }
+            <a class="btn btn-secondary"  asp-controller="Information" asp-action="Index">Back To List</a>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial.cshtml" />
+    }
+<script>
+    function ValidateInput(){
+        if(document.getElementById("img-upload").value == ""){
+              Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Please Upload Image !',
+            })
+           return false;
+        }
+        return true;
+    }
+</script>
+<script>
+   tinymce.init({
+      selector: 'textarea',
+      plugins: 'advlist autolink lists link image charmap preview anchor pagebreak',
+      toolbar_mode: 'floating',
+    });
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          $('#image-preview').attr('src', e.target.result);
+          $('#image-preview').hide();
+          $('#image-preview').fadeIn(650);
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    $("#file-input").change(function() {
+      readURL(this);
+    });
+
+  
+
+</script>
+
+}

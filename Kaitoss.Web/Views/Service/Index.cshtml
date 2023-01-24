@@ -1,0 +1,45 @@
+﻿
+
+@{
+    ViewBag.Title = "Table Services";
+    Layout = "~/Views/Shared/_dashboard.cshtml";
+}
+<div class="py-3">
+    <div class="row pt-4">
+        <div class="col-12">
+            <h1 class="h1-header mt-5"> Table Services</h1>
+        </div>
+        <div class="col-6 my-2">
+            <a class="btn-primary btn"  asp-controller="Service" asp-action="Upsert"><i class="bi bi-plus-circle me-1"></i> Create New Service</a>
+        </div>
+    </div>
+</div>
+
+<table id="tblData" class="table table-hover table-bordered ">
+
+    <thead>
+        <tr>
+            <th>
+                Image Service
+            </th>
+          
+            <th>
+               Title
+            </th>
+            <th>
+                Describe
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+</table>
+ 
+@section Scripts{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="~/Components/js/Service.js"></script>
+}
+    
+

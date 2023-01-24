@@ -1,0 +1,11 @@
+﻿@inject UserManager<ApplicationUser> userManager;
+
+     <header class='dashboard-toolbar'>
+                <div class="d-flex justify-content-between align-items-center flex-elem">
+                    <a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a>
+                    <h1 class="h1-design d-block ">
+                        <img src="~/images/profile.png" alt="" width="40"
+                             class="img-design mx-2"> Hello @*@userManager.GetUserAsync(User).Result.Name*@
+                    </h1>
+                </div>
+     </header>

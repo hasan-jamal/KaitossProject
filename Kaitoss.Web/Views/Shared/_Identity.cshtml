@@ -1,0 +1,68 @@
+﻿@inject UserManager<ApplicationUser> userManager;
+
+   <ul class="dashboard-nav-list">
+                <li>
+                    <a asp-controller="Home" asp-action="Index" class="dashboard-nav-item ">
+                        <i class="fas fa-home"></i>
+                        Home Page
+                    </a>
+                </li>
+             
+                   <li>
+                    <a asp-controller="Goal" asp-action="Index" class="dashboard-nav-item ">
+                        <i class="fas fa-home"></i>
+                        Header Section
+                    </a>
+                </li>
+                  <li>
+                  <a  asp-controller="Service" asp-action="Index" class="dashboard-nav-item  ">
+                            <i class="fa-solid fa-walkie-talkie"></i>
+                            Services Section
+                        </a>
+                   </li>
+                   <li>
+                        <a asp-controller="Contacts" asp-action="Index" class="dashboard-nav-item">
+                            <i class="fa-solid fa-walkie-talkie"></i>
+                            Contacts Section
+                        </a>
+                   </li>
+                    <li>
+                        <a asp-controller="About" asp-action="Index" class="dashboard-nav-item">
+                            <i class="fa-solid fa-walkie-talkie"></i>
+                            About Section
+                        </a>
+                   </li>
+                  
+                   <li>
+                        <a asp-controller="Information" asp-action="Index" class="dashboard-nav-item">
+                            <i class="fa-solid fa-walkie-talkie"></i>
+                            Information Section
+                        </a>
+                   </li>
+                    <li>
+                        <a asp-controller="Blog" asp-action="Index" class="dashboard-nav-item">
+                            <i class="fa-solid fa-walkie-talkie"></i>
+                            Blog Section
+                        </a>
+                   </li>
+                  
+               @if (User.Identity!.IsAuthenticated && User.IsInRole(SD.Role_Admin))
+                {
+                   <li>
+                    <a  asp-controller="Account" asp-action="Users" class="dashboard-nav-item  ">
+                        <i class="fa-solid fa-walkie-talkie"></i>
+                        Users Component
+                    </a>
+                  </li>
+                
+                }
+
+                <li><div class="nav-item-divider"></div> </li>
+                <li>
+                    <form asp-controller="Account" asp-action="Logout">
+                        <button type="submit" class="dashboard-nav-item bg-none">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </button>
+                    </form>
+                </li>
+            </ul>
